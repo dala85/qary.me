@@ -1,0 +1,44 @@
+name: nlpia
+
+channels:
+  - conda-forge  # conda-forge is higher priority than defaults in nlpia package
+  - defaults  # top priority: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html#managing-channels
+  # - anaconda  # bad idea: https://github.com/conda/conda/issues/9462
+
+dependencies:
+  - ConfigArgParse
+  - django
+  - django-environ
+  - django-extensions
+  # - elasticsearch
+  - html5lib
+  # - hunspell
+  # - hunspell-en
+  - jupyter
+  - lxml
+  - nltk
+  - pandas
+  - pip
+  - pre-commit
+  - psycopg2
+  - pyscaffold
+  - pytest-cov
+  - python>=3.7.6
+  - pytorch
+  - regex  # ==2018.1.10
+  - seaborn
+  - scipy
+  - spacy>=2.2.2,<2.3.0
+  - tqdm
+  - watchdog
+
+  - pip:
+    - environment
+    - fuzzywuzzy
+    - nboost
+    - simpletransformers
+    - python-slugify
+    - tensorboardX
+    - transformers>=2.4.1,<2.5.0
+    - wikipedia-api
+    # - hunspell

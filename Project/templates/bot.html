@@ -1,0 +1,122 @@
+{% extends 'home.html'%}
+{% block body_block%}
+
+
+
+<!--  Question the bot-->            
+        <div >
+            <div class="list-group-item">
+                
+              
+                <form action = "{% url 'answer'%}" method = "POST"> {% csrf_token %}
+
+<!--                  radio button    -->
+                
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="parul_bot" id="parul_bot" autocomplete="off" value="parul_bot" > parul_bot
+
+                  </label>
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="basebot" id="basebot" autocomplete="off" value="basebot"> basebot
+                  </label>
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="glossary_bot" id="glossary_bot" autocomplete="off" value="glossary_bot" > glossary_bot
+                  </label>
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="pattern_bot" id="pattern_bot" autocomplete="off" value="pattern_bot" > pattern_bot
+                  </label>
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="search_fuzzy_bot" id="search_fuzzy_bot" autocomplete="off" value="search_fuzzy_bot" > search_fuzzy_bot
+                  </label>
+                  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="eliza_bot" id="eliza_bot" autocomplete="off" value="eliza_bot" > eliza_bot
+                  </label>
+                 <!--  <label class="btn btn-outline-secondary">
+                    <input type="radio" name="qa_bot" id="qa_bot" autocomplete="off" value="qa_bot" > qa_bot
+                  </label> -->
+                  
+                </div>
+                <p>
+                  <ul>
+                    <li>parul_bot: Movies bot </li>
+                    <li>basebot: </li>
+                    <li>glossary: definitions from glossary yml files in data/faq/glossary-*.yml</li>
+                    <li>pattern: regex patterns and greeting templates</li>
+                    <li>search_fuzzy_bot:</li>
+                    <li>eliza: a python port of the ELIZA therapist bot</li>
+                    <li>qa_bot: BERT and ALBERT Wikipedia Question Answering (WikiQA reading comprehension tests)</li>
+                  </ul>
+                </p>
+                <br>
+                <br>
+
+
+         
+
+<!-- -------------------------- -->
+                <form method="POST">
+                <h5><strong class="d-inline-block mb-2 text-success">YOU: <input placeholder="write your question" type="text" name="question_req" size="50">&#128515;</strong></h5>
+                
+                </form>
+              
+                <h5><strong >BOT: {{insert}}</strong></h5>
+                <h5><strong class="d-inline-block mb-2 text-success">YOU: {{Question}}</strong></h5>
+                
+            </div>
+<!--  speperate line -->            
+              <hr style="font-weight: 700; text-align: center; margin-bottom: 70px; margin-top: 70px; background-color: rgb(40, 167, 69); text-decoration-style: dotted;"></h4>
+
+
+<!--           Chat history-->            
+        <table class="table table-striped">
+                <caption>List of Bot Q&A history</caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Your question</th>
+                    <th scope="col">Bot answer</th>
+                    <th scope="col">Created date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for i in c%}
+                  <tr>
+                    <td><strong class="d-inline-block mb-2 text-success">{{i.question}}?</strong></td>
+                    <td>{{i.answer}} </td> 
+                    <td>{{i.create_date}}</td>
+                  </tr>
+                  {%endfor%}
+
+                  </tr>
+                </tbody>
+        </table>
+
+<!--   <table class="table table-striped">
+                <caption>List of Bot Q&A document</caption>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Summary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%for d in document_obj%}
+                  <tr>
+                    <td><strong class="d-inline-block mb-2 text-success">{{d.title}}?</strong></td>
+                    <td>{{d.summary}} </td> 
+                  </tr>
+                  {%endfor%}
+
+                  </tr>
+                </tbody>
+        </table> -->
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
